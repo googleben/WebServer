@@ -4,8 +4,11 @@
  * Module dependencies.
  */
 
+var fs = require("fs");
 var app = require('../app');
 var debug = require('debug')('WebServer:server');
+var logfile = fs.createWriteStream("node.log");
+debug.log = function(e) { logfile.write(""+e); console.log(e); };
 var http = require('http');
 
 /**
